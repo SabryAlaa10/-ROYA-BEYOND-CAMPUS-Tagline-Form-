@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل — ROYA BEYOND CAMPUS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#0a1830;
+    --navy-800:#0f2340;
+    --navy-700:#16305a;
+    --gold-500:#f5a524;
+    --gold-400:#ffb946;
+    --text-light:#eef3fb;
+    --text-muted:#a9b8d1;
+    --danger:#ff6b6b;
+    --success:#3ddc97;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    font-family:'Cairo',sans-serif;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(245,165,36,0.15), transparent),
+      radial-gradient(1000px 500px at 110% 10%, rgba(61,220,151,0.08), transparent),
+      linear-gradient(160deg,var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+    color:var(--text-light);
+    min-height:100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:40px 16px;
+    padding-top:calc(40px + env(safe-area-inset-top,0px));
+    padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{width:100%;max-width:560px;}
+  .header{text-align:center;margin-bottom:28px;}
+  .logo-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+  .logo-circle{
+    width:64px;height:64px;border-radius:50%;
+    background:#ffffff;
+    display:flex;align-items:center;justify-content:center;
+    padding:6px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.08);
+  }
+  .logo-circle img{width:100%;height:100%;object-fit:contain;border-radius:50%;}
+  .logo-family{
+    background:#ffffff;
+    border-radius:16px;
+    padding:8px 16px;
+    box-shadow:0 10px 26px rgba(245,165,36,0.18), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+  .logo-family img{height:56px;width:auto;display:block;}
+  @media(max-width:420px){
+    .logo-circle{width:52px;height:52px;}
+    .logo-family img{height:44px;}
+    .logo-row{gap:12px;}
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(245,165,36,0.12);
+    border:1px solid rgba(245,165,36,0.35);
+    color:var(--gold-400);
+    font-weight:700;font-size:13px;
+    padding:6px 14px;border-radius:999px;margin-bottom:14px;
+  }
+  h1{font-size:28px;font-weight:800;margin:0 0 6px;line-height:1.35;letter-spacing:1.5px;direction:ltr;}
+  .tagline-en{color:var(--gold-400);font-weight:700;font-size:15px;margin:0 0 4px;direction:ltr;}
+  .tagline-ar{color:var(--text-light);font-weight:700;font-size:15px;margin:0 0 8px;}
+  .subtitle{color:var(--text-muted);font-size:14.5px;margin:0;line-height:1.7;}
+  .card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:28px 24px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  .pay-box{
+    background:rgba(245,165,36,0.1);
+    border:1px dashed rgba(245,165,36,0.5);
+    border-radius:12px;
+    padding:12px 14px;
+    margin-bottom:20px;
+    font-size:13.5px;
+    line-height:1.9;
+    color:var(--text-light);
+  }
+  .pay-box b{color:var(--gold-400);}
+  .field{margin-bottom:18px;}
+  label{
+    display:block;font-size:14px;font-weight:600;
+    margin-bottom:7px;color:var(--text-light);
+  }
+  label .req{color:var(--gold-400);margin-inline-start:2px;}
+  label .opt{color:var(--text-muted);font-weight:400;font-size:12.5px;margin-inline-start:4px;}
+  input,select,textarea{
+    width:100%;
+    background:rgba(255,255,255,0.06);
+    border:1.5px solid rgba(255,255,255,0.12);
+    border-radius:12px;
+    padding:12px 14px;
+    font-family:'Cairo',sans-serif;
+    font-size:15px;
+    color:var(--text-light);
+    outline:none;
+    transition:border-color .15s, background .15s;
+  }
+  textarea{resize:vertical;min-height:84px;line-height:1.7;}
+  select{ appearance:none; -webkit-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' stroke='%23a9b8d1' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat:no-repeat; background-position:left 14px center;
+  }
+  select option{
+    background:var(--navy-800);
+    color:var(--text-light);
+    padding:10px;
+  }
+  select option:checked,select option:hover{
+    background:var(--navy-700);
+  }
+  input::placeholder,textarea::placeholder{color:#7f8db0;}
+  input:focus,select:focus,textarea:focus{
+    border-color:var(--gold-500);
+    background:rgba(255,255,255,0.09);
+  }
+  .hint{color:var(--text-muted);font-size:12.5px;margin-top:6px;line-height:1.7;}
+  .error-msg{color:var(--danger);font-size:12.5px;margin-top:6px;display:none;}
+  .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--danger);}
+  .field.invalid .error-msg{display:block;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:480px){.row2{grid-template-columns:1fr;}}
+  .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;}
+  button[type="submit"]{
+    width:100%;
+    background:linear-gradient(135deg,var(--gold-500),var(--gold-400));
+    color:#1a1200;
+    font-family:'Cairo',sans-serif;
+    font-weight:800;
+    font-size:16px;
+    border:none;
+    border-radius:12px;
+    padding:15px;
+    cursor:pointer;
+    margin-top:6px;
+    transition:transform .12s, box-shadow .12s, opacity .12s;
+    box-shadow:0 10px 24px rgba(245,165,36,0.25);
+  }
+  button[type="submit"]:hover{transform:translateY(-1px);}
+  button[type="submit"]:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+  .note{color:var(--text-muted);font-size:12.5px;text-align:center;margin-top:16px;line-height:1.8;}
+  .status{
+    display:none;
+    text-align:center;
+    border-radius:16px;
+    padding:34px 20px;
+  }
+  .status.show{display:block;}
+  .status .icon{font-size:44px;margin-bottom:10px;}
+  .status h2{font-size:20px;margin:0 0 8px;}
+  .status p{color:var(--text-muted);font-size:14px;margin:0;line-height:1.8;}
+  .status.success h2{color:var(--success);}
+  .status.fail h2{color:var(--danger);}
+  .whatsapp-cta{
+    margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.1);
+  }
+  .whatsapp-text{color:var(--text-muted);font-size:13.5px;margin:0 0 14px;line-height:1.8;}
+  .whatsapp-btn{
+    display:inline-flex;align-items:center;gap:8px;justify-content:center;
+    width:100%;background:#25D366;color:#0a1830;font-weight:800;font-size:14.5px;
+    text-decoration:none;border-radius:12px;padding:13px;font-family:'Cairo',sans-serif;
+    box-shadow:0 10px 24px rgba(37,211,102,0.2);
+  }
+  .retry-btn{
+    margin-top:18px;background:transparent;border:1.5px solid rgba(255,255,255,0.2);
+    color:var(--text-light);padding:10px 20px;border-radius:10px;cursor:pointer;
+    font-family:'Cairo',sans-serif;font-weight:600;font-size:14px;
+  }
+  footer{text-align:center;color:var(--text-muted);font-size:12px;margin-top:24px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="logo-row">
+      <!-- اللوجوهات: شغّل fill_logos.py عشان تتنسخ تلقائيًا من الصفحة القديمة -->
+      <div class="logo-circle"><img src="{{LOGO_UNIVERSITY}}" alt="جامعة الصالحية الجديدة" onerror="this.parentElement.style.display='none'"></div>
+      <div class="logo-family"><img src="{{LOGO_FAMILY}}" alt="أسرة رؤية" onerror="this.parentElement.style.display='none'"></div>
+      <div class="logo-circle"><img src="{{LOGO_COLLEGE}}" alt="كلية الحاسبات والمعلومات" onerror="this.parentElement.style.display='none'"></div>
+    </div>
+    <span class="badge">👨‍👩‍👧‍👦 أسرة رؤية · كلية الحاسبات والمعلومات</span>
+    <h1>ROYA BEYOND CAMPUS</h1>
+    <p class="tagline-en">Beyond Learning. Into the Industry.</p>
+    <p class="tagline-ar">من قاعات الجامعة إلى قلب سوق العمل</p>
+    <p class="subtitle">اسمع من الخبراء، اسأل عن تجربتهم، وافهم خطوتك الجاية.<br>سجّل بياناتك بعد التحويل، وهيوصلك QR Code خاص بيك بعد تأكيد الدفع.</p>
+  </div>
+
+  <div class="card">
+    <form id="regForm" novalidate>
+      <div class="pay-box">
+        💳 رسوم التذكرة <b>100 جنيه مصري</b>. حوّل المبلغ <b>الأول</b> (فودافون كاش أو InstaPay)، وبعدين املأ البيانات دي.
+        <!-- ضيف هنا رقم فودافون كاش / عنوان InstaPay اللي الطلاب هيحوّلوله -->
+      </div>
+
+      <div class="field" data-field="full_name">
+        <label>الاسم بالكامل <span class="req">*</span></label>
+        <input type="text" name="full_name" placeholder="مثال: صبري محمد علاء" autocomplete="name">
+        <div class="error-msg">من فضلك اكتب اسمك ثنائي على الأقل</div>
+      </div>
+
+      <div class="row2">
+        <div class="field" data-field="university_id">
+          <label>الرقم الجامعي <span class="req">*</span></label>
+          <input type="text" name="university_id" placeholder="مثال: 231001234" inputmode="numeric">
+          <div class="error-msg">الرقم الجامعي مطلوب</div>
+        </div>
+        <div class="field" data-field="method">
+          <label>حوّلت بأنهي طريقة؟ <span class="req">*</span></label>
+          <select name="method">
+            <option value="">اختر طريقة التحويل</option>
+            <option value="Vodafone Cash">فودافون كاش</option>
+            <option value="InstaPay">InstaPay</option>
+          </select>
+          <div class="error-msg">اختار طريقة التحويل</div>
+        </div>
+      </div>
+
+      <div class="field" data-field="sender_phone">
+        <label>رقم الموبايل اللي حوّلت منه <span class="req">*</span></label>
+        <input type="tel" name="sender_phone" placeholder="01xxxxxxxxx" inputmode="numeric" autocomplete="tel">
+        <div class="hint">هنقارنه بحسابنا للتأكد إن المبلغ وصل.</div>
+        <div class="error-msg">اكتب رقم موبايل صحيح (11 رقم)</div>
+      </div>
+
+      <div class="field" data-field="email">
+        <label>البريد الإلكتروني <span class="req">*</span></label>
+        <input type="email" name="email" placeholder="example@gmail.com" autocomplete="email">
+        <div class="hint">هيوصلك عليه كود التذكرة بعد تأكيد الدفع، فتأكد إنه مكتوب صح.</div>
+        <div class="error-msg">اكتب بريد إلكتروني صحيح</div>
+      </div>
+
+      <div class="field" data-field="notes">
+        <label>ملاحظات <span class="opt">(اختياري)</span></label>
+        <textarea name="notes" maxlength="500" placeholder="لو في أي حاجة عايز تقولهالنا (مثلًا: الحساب اللي حوّلت منه باسم حد تاني)"></textarea>
+      </div>
+
+      <div class="hp" aria-hidden="true">
+        <label>Website</label>
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" id="submitBtn">إرسال الطلب ✦</button>
+      <p class="note">بعد ما نتأكد إن التحويل وصل، هيوصلك QR Code فريد على بريدك الإلكتروني — ده تذكرة دخولك يوم الفعالية، ماتشاركهوش مع حد.</p>
+    </form>
+
+    <div class="status" id="statusSuccess">
+      <div class="icon">✅</div>
+      <h2>تم استلام طلبك!</h2>
+      <p>هنراجع عملية التحويل، وبعد التأكد إن المبلغ وصل هيوصلك إيميل فيه كود تذكرتك والـ QR. اتأكد إنك تفتح الإيميل (وفولدر Spam) قبل يوم الفعالية.</p>
+      <div class="whatsapp-cta">
+        <p class="whatsapp-text">حبيت تكون من ضمن أسرة رؤية وتعرف كل جديد أول بأول؟ انضم لكومينتي الأسرة على واتساب 👇</p>
+        <a class="whatsapp-btn" href="https://chat.whatsapp.com/H4L5agmgZRT2ZTAWPTuGEi" target="_blank" rel="noopener noreferrer">
+          📱 انضم لكومينتي أسرة رؤية
+        </a>
+      </div>
+    </div>
+
+    <div class="status" id="statusFail">
+      <div class="icon">⚠️</div>
+      <h2>حصلت مشكلة في التسجيل</h2>
+      <p id="failMsg">تأكد من اتصالك بالإنترنت وجرّب تاني، أو تواصل مع فريق الاستقبال.</p>
+      <button class="retry-btn" onclick="resetForm()">حاول تاني</button>
+    </div>
+  </div>
+
+  <footer>أسرة رؤية الطلابية © 2026 — كلية الحاسبات والمعلومات، جامعة الصالحية الجديدة</footer>
+</div>
+
+<script>
+// ============================================================
+// رابط الـ n8n Webhook (Production URL) بتاع الفورم ده
+// ============================================================
+const WEBHOOK_URL = "https://salehamohamed.app.n8n.cloud/webhook/roya-beyond-campus-register";
+
+const form = document.getElementById('regForm');
+const submitBtn = document.getElementById('submitBtn');
+const statusSuccess = document.getElementById('statusSuccess');
+const statusFail = document.getElementById('statusFail');
+const failMsg = document.getElementById('failMsg');
+
+const toLatin = s => String(s || '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+const normPhone = v => toLatin(v).replace(/[\s\-]/g, '').replace(/^\+20/, '0').replace(/^0020/, '0');
+
+const validators = {
+  full_name: v => v.trim().split(/\s+/).filter(Boolean).length >= 2 && v.trim().length >= 5,
+  university_id: v => v.trim().length >= 4,
+  method: v => v.trim().length > 0,
+  sender_phone: v => /^01[0125][0-9]{8}$/.test(normPhone(v)),
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())
+};
+
+function setInvalid(name, invalid){
+  const field = form.querySelector(`[data-field="${name}"]`);
+  if(field) field.classList.toggle('invalid', invalid);
+}
+
+function validateAll(){
+  let ok = true;
+  for(const name in validators){
+    const el = form.elements[name];
+    const valid = validators[name](el.value || '');
+    setInvalid(name, !valid);
+    if(!valid) ok = false;
+  }
+  return ok;
+}
+
+Object.keys(validators).forEach(name=>{
+  form.elements[name].addEventListener('input', ()=> setInvalid(name, !validators[name](form.elements[name].value)));
+  form.elements[name].addEventListener('change', ()=> setInvalid(name, !validators[name](form.elements[name].value)));
+});
+
+function resetForm(){
+  statusFail.classList.remove('show');
+  form.style.display = 'block';
+}
+
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  if(!validateAll()) return;
+
+  const payload = {
+    full_name: form.elements.full_name.value.trim(),
+    university_id: form.elements.university_id.value.trim(),
+    method: form.elements.method.value,
+    sender_phone: normPhone(form.elements.sender_phone.value),
+    email: form.elements.email.value.trim().toLowerCase(),
+    notes: form.elements.notes.value.trim(),
+    website: form.elements.website.value,
+    event_name: "ROYA BEYOND CAMPUS",
+    submitted_at: new Date().toISOString()
+  };
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "جاري الإرسال...";
+
+  try{
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    // n8n always replies with JSON (success or error), so try to read it
+    // regardless of the HTTP status — that's where the real, specific
+    // message lives (e.g. "طلبك اتسجل قبل كده").
+    let data = null;
+    try { data = await res.json(); } catch (parseErr) { data = null; }
+
+    if (res.ok && data && data.status === 'success') {
+      form.style.display = 'none';
+      statusSuccess.classList.add('show');
+
+    } else if (data && data.status === 'error' && data.message) {
+      // A specific, known error from the workflow (duplicate request, etc.)
+      failMsg.textContent = data.message;
+      form.style.display = 'none';
+      statusFail.classList.add('show');
+
+    } else if (!res.ok) {
+      failMsg.textContent = `حصلت مشكلة من سيرفر التسجيل (كود ${res.status}). برجاء المحاولة تاني بعد شوية، أو تواصل مع فريق الاستقبال لو استمرت.`;
+      form.style.display = 'none';
+      statusFail.classList.add('show');
+
+    } else {
+      failMsg.textContent = "وصل رد غير متوقع من سيرفر التسجيل. برجاء المحاولة تاني، ولو استمرت المشكلة كلم فريق الاستقبال.";
+      form.style.display = 'none';
+      statusFail.classList.add('show');
+    }
+
+  }catch(err){
+    // fetch() itself threw — the request never reached the server at all
+    if (err instanceof TypeError) {
+      failMsg.textContent = "مش قادرين نوصل لسيرفر التسجيل خالص. تأكد من اتصالك بالإنترنت، وجرّب تاني بعد شوية.";
+    } else {
+      failMsg.textContent = "حصلت مشكلة غير متوقعة أثناء التسجيل. برجاء المحاولة تاني.";
+    }
+    form.style.display = 'none';
+    statusFail.classList.add('show');
+    console.error('Registration submit error:', err);
+  }finally{
+    submitBtn.disabled = false;
+    submitBtn.textContent = "إرسال الطلب ✦";
+  }
+});
+</script>
+</body>
+</html>
